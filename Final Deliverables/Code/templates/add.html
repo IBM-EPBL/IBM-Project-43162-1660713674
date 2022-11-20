@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Add Expense</h3>
+            <form action="/addexpense" method="POST">
+                
+                <div class="form-group">
+                     <label for="">Date</label> 
+                     <input class="form-control" type="datetime-local" name="date" id="date"></div>
+                <div class="form-group"> <label for="">Expense name</label> 
+                    <input class="form-control" type="text" name="expensename" id="expensename">
+                </div>
+                <div class="form-group">
+                     <label for="">Expense Amount</label> 
+                      <input class="form-control"  type="number" min="0" name="amount" id="amount">
+                </div>
+
+                <div class="form-group">
+                    <label for=""></label> 
+                    <select class="form-control" name="paymode" id="paymode">
+                        <option  selected hidden>Pay-Mode</option>
+                        <option name="cash" value="cash">cash</option>
+                        <option name="debitcard" value="debitcard">debitcard</option>
+                        <option name="creditcard" value="creditcard">creditcard</option>
+                        <option name="epayment" value="epayment">epayment</option>
+                        <option name="onlinebanking" value="onlinebanking">onlinebanking</option>
+                    
+                    </select>
+                
+               
+                
+
+                 <div class="form-group">
+                    <label for=""></label>
+                    <select class="form-control" name="category" id="category">
+
+                         <option selected hidden>Category</option>
+                        <option   name = "food" value="food">food</option>
+                        <option name = "entertainment" value="entertainment">Entertainment</option>
+                        <option name = "business" value="business">Business</option>
+                        <option name ="rent" value="rent">Rent</option>
+                        <option name = "EMI" value="EMI">EMI</option>
+                        <option name = "other" value="other">other</option>
+            
+                    </select>
+                </div>
+
+               
+                
+                <input class="btn btn-danger" type="submit" value="Add" id="">
+        
+            </form>
+            
+            <div  style="position: relative; left: 590px; top: -460px;" class="imagge">
+                <img width="90%" height="90%" src="../static/images/addd.jpg" class="rounded float-left" alt="...">
+
+               </div>
+              
+        </div>
+    </div>
+    
+</div>
+   
+    {% endblock %}

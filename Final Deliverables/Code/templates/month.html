@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container ">
+                                                                                              
+
+<div class="row">
+    <div class="col-md-5">
+        <h3 class="mt-5">MONTH Expense Breakdown</h3>
+        
+
+
+        <div class="card shadow mb-2 bg-white rounded-pill">
+            <div class="card-body ">
+            <div class="row">
+                <div class="col-md-6"> DATE </div>
+                <div class="col-md-6">  AMOUNT   </div>
+             </div>
+            </div>
+        </div>
+        {% for row in texpense %}  
+        
+        <div class="card shadow mb-2 bg-white rounded-bottom">
+            <div class="card-body ">
+            <div class="row">
+                <div id ="ttime" class="col-md-6">{{row [0]}}</div>
+                <div id="tamount" class="col-md-6">   {{row[1] }}   </div>
+             </div>
+            </div>
+        </div>
+                
+     
+     {% endfor %}
+</div>
+</div>
+<section>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="mt-5">Expense Breakdown BY Category</h3>
+ 
+            <div class="card shadow mb-2 bg-white rounded-bottom">
+                <div class="card-body ">
+                <div class="row">
+                    <div class="col-md-6">Food</div>
+                    <div id="tfood" class="col-md-6">   {{ t_food}}   </div>
+                 </div>
+                </div>
+            </div>
+ 
+            <div class="card shadow mb-2 bg-white rounded">
+             <div class="card-body">
+             <div class="row">
+                 <div class="col-md-6">Entertainment</div>
+                 <div id="tentertainment" class="col-md-6"> {{ t_entertainment}}   </div>
+              </div>
+             </div>
+         </div>
+ 
+ 
+         <div class="card shadow mb-2 bg-white rounded">
+             <div class="card-body">
+             <div class="row">
+                 <div class="col-md-6">Business</div>
+                 <div id="tbusiness" class="col-md-6"> {{t_business}}   </div>
+              </div>
+             </div>
+         </div>
+ 
+ 
+         <div class="card shadow mb-2 bg-white rounded">
+             <div class="card-body">
+             <div class="row">
+                 <div  class="col-md-6">Rent</div>
+                 <div id="trent" class="col-md-6"> {{  t_rent }}  </div>
+              </div>
+             </div>
+         </div>
+ 
+ 
+         <div class="card shadow mb-2 bg-white rounded">
+             <div class="card-body">
+             <div class="row">
+                 <div class="col-md-6">EMI</div>
+                 <div id="temi"  class="col-md-6">{{ t_EMI }}   </div>
+              </div>
+             </div>
+         </div>
+ 
+ 
+         <div class="card shadow mb-2 bg-white rounded">
+             <div class="card-body">
+             <div class="row">
+                 <div class="col-md-6">Other</div>
+                 <div id="tother" class="col-md-6"> {{ t_other}}</div>
+              </div>
+             </div>
+         </div>
+ 
+         <div class="card shadow mb-2 btn-outline-danger rounded-pill">
+             <div class="card-body">
+             <div class="row">
+                 <div class="col-md-6">Total</div>
+                 <div class="col-md-6">₹ {{total}}  </div>
+              </div>
+             </div>
+         </div>
+ 
+        </div>
+        <div class="col-md-6">
+         <canvas id="myChart" width="400" height="400"></canvas>
+         <script>
+             let food = document.getElementById('tfood').innerHTML
+             let entertainment = document.getElementById('tentertainment').innerHTML
+             let business = document.getElementById('tbusiness').innerHTML
+             let rent = document.getElementById('trent').innerHTML
+             let emi = document.getElementById('temi').innerHTML
+             let other = document.getElementById('tother').innerHTML
+         var ctx = document.getElementById('myChart').getContext('2d');
+         var myChart = new Chart(ctx, {
+             type: 'doughnut',
+             data: {
+                 labels: ['Food', 'Entertainment', 'Business', 'Rent', 'EMI', 'Other'],
+                 datasets: [{
+                     label: 'Expenses Chart',
+                     data: [food, entertainment, business, rent, emi, other],
+                     backgroundColor: [
+                     'rgb(255, 99, 132)',
+                     'rgb(0, 0, 0)',
+                     'rgb(255, 205, 86)',
+                     'rgb(201, 203, 207)',
+                        'rgb(54, 162, 235)',
+                         'rgb(215, 159, 64)'
+                     ],
+                    
+                 }]
+             },
+             options: {
+                 responsive: true,
+                 plugins: {
+       legend: {
+         position: 'bottom',
+       },
+       title: {
+         display: true,
+         text: 'EXPENSE BREAKDOWN'
+       }
+     }
+             }
+         });
+ 
+ 
+ 
+ 
+  
+         </script>
+        </div>
+    </div>
+ </div>
+
+
+
+</section>
+
+
+</div>
+
+{% endblock %}

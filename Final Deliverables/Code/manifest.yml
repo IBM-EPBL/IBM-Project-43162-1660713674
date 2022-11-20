@@ -1,0 +1,5 @@
+applications:
+ - name: Python Flask App IBCMR 2022-10-19
+   random-route: true
+   memory: 512M
+   disk_quota: 1.5G
